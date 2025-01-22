@@ -1,0 +1,60 @@
+#!/bin/sh
+echo $SHELL
+
+cat answer.sh
+cat ~/Desktop/42/honda/playground/answer.sh
+
+echo "test
+# > 
+# bash: unexpected EOF while looking for matching `"'
+# bash: syntax error: unexpected end of file
+
+echo 'hello'
+# hello
+
+echo "'hello'"
+# 'hello'
+
+echo '"hello"'
+# "hello"
+
+echo "'hello"
+# 'hello
+
+echo "'hello"'
+# > 
+# bash: unexpected EOF while looking for matching `''
+# bash: syntax error: unexpected end of file
+
+echo \
+# >
+
+echo "\"
+#>
+
+echo "\\"
+# \
+
+echo ;
+#
+
+echo ";"
+# ;
+
+echo *
+# playground README.md sample
+
+echo "*"
+# *
+
+echo "$SHELL"
+# /bin/bash
+
+echo "cat *"
+# cat *
+
+echo "cat $SHELL"
+# cat /bin/bash
+
+# メタ文字
+# * + ? $ ^ . () | \ {} [
