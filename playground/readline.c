@@ -16,8 +16,10 @@ int	main(void)
 			break ;
 		}
 		printf("line:%s\n", line);
+		add_history(line);
 		free(line);
 	}
+
 	printf("finish\n");
 	return (0);
 }
