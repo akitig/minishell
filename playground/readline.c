@@ -6,8 +6,10 @@
 int	main(void)
 {
 	char *line = NULL;
+	int count;
 
-	while (1)
+	count = 0;
+	while (count < 3)
 	{
 		line = readline("minishell > ");
 		if (line == NULL)
@@ -18,6 +20,19 @@ int	main(void)
 		printf("line:%s\n", line);
 		add_history(line);
 		free(line);
+		if (rl_line_buffer != NULL)
+		{
+			printf("rl_point:%d\n", rl_point);
+			printf("rl_end:%d\n", rl_end);
+			printf("rl_line_buffer:%s\n", rl_line_buffer);
+		}
+		count++;
+	}
+	if (rl_line_buffer != NULL)
+	{
+		printf("rl_point:%d\n", rl_point);
+		printf("rl_end:%d\n", rl_end);
+		printf("rl_line_buffer:%s\n", rl_line_buffer);
 	}
 
 	printf("finish\n");
