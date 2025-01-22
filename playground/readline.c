@@ -28,11 +28,27 @@ int	main(void)
 		}
 		count++;
 	}
-	if (rl_line_buffer != NULL)
+	rl_clear_history();
+
+	count = 0;
+	while (count < 3)
 	{
-		printf("rl_point:%d\n", rl_point);
-		printf("rl_end:%d\n", rl_end);
-		printf("rl_line_buffer:%s\n", rl_line_buffer);
+		line = readline("minishell > ");
+		if (line == NULL)
+		{
+			free(line);
+			break ;
+		}
+		printf("line:%s\n", line);
+		add_history(line);
+		free(line);
+		if (rl_line_buffer != NULL)
+		{
+			printf("rl_point:%d\n", rl_point);
+			printf("rl_end:%d\n", rl_end);
+			printf("rl_line_buffer:%s\n", rl_line_buffer);
+		}
+		count++;
 	}
 
 	printf("finish\n");
