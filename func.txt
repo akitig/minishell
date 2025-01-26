@@ -1,0 +1,5 @@
+◎ファイル権限
+xrw 142
+
+◎stat, fstat, lstat -> lsコマンドで使う
+

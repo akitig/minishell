@@ -1,0 +1,7 @@
+when error occured: Bad file descriptor
+when error occured: 0
+errorno: 0
+Standard input is a terminal.
+errorno: 25
+errormsg: Inappropriate ioctl for device
+Standard output is a file or pipe.
