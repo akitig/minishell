@@ -1,0 +1,9 @@
+# Ignore all files
+**/a.out
+
+
+
+**/test
+
+.DS_Store
+test.txt
