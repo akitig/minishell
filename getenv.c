@@ -6,7 +6,7 @@
 /*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:58:09 by rhonda            #+#    #+#             */
-/*   Updated: 2025/01/27 22:46:30 by rhonda           ###   ########.fr       */
+/*   Updated: 2025/01/27 23:23:00 by rhonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,6 @@ char *getenv(const char *name);
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <errno.h>
-#include <string.h>
-
 
 int main() {
 
