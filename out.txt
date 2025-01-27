@@ -1,7 +1,3 @@
-when error occured: Bad file descriptor
-when error occured: 0
-errorno: 0
-Standard input is a terminal.
-errorno: 25
-errormsg: Inappropriate ioctl for device
-Standard output is a file or pipe.
+Oldfd Wrote Here
+Newfd Wrote Here
+Newfd from already used dup2 Wrote Here
