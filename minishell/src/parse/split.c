@@ -6,7 +6,7 @@
 /*   By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:40:32 by akunimot          #+#    #+#             */
-/*   Updated: 2025/01/26 17:11:47 by akunimot         ###   ########.fr       */
+/*   Updated: 2025/02/01 00:04:03 by akunimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,35 @@ static void	ft_free_array(char **array, int i)
 	free(array);
 }
 
+static char	*expand_daller(char *word, char **env)
+{
+	int		i;
+	char	*ret;
+
+	i = 0;
+	while (env[i])
+	{
+		if (!ft_strncmp(env[i], word + 1, ft_strlen(word) - 1))
+		{
+			ret = ft_strdup(&env[i][5]);
+			free(word);
+			return (ret);
+		}
+		i++;
+	}
+	return (word);
+}
+
+static void	input_daller(char **str, char **env)
+{
+	while (*str)
+	{
+		if (*str[0] == '$')
+			*str = expand_daller(*str, env);
+		str++;
+	}
+}
+
 char	**ft_split_str(char const *str, char c)
 {
 	char	**array;
@@ -112,8 +141,8 @@ int	main(int argc, char **argv, char **env)
 	i = 0;
 	(void)argc;
 	(void)argv;
-	(void)env;
 	res = ft_split_str(str, ' ');
+	input_daller(res, env);
 	while (res[i])
 	{
 		printf("%s\n", res[i]);
