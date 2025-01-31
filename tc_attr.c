@@ -6,7 +6,7 @@
 /*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:58:09 by rhonda            #+#    #+#             */
-/*   Updated: 2025/01/27 23:35:00 by rhonda           ###   ########.fr       */
+/*   Updated: 2025/01/27 23:36:57 by rhonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,16 @@ int tcsetattr(int fd, int optional_actions, const struct termios *termios_p);
 //            cc_t     c_cc[NCCS];   /* special characters */
 // }
 
-
 #include <unistd.h>
 #include <termios.h>
 #include <errno.h>
 #include <stdio.h>
-
 
 int main() {
 
 	struct termios ter;
 	
 	//tcgetattr success
-
 	int ret = tcgetattr(STDIN_FILENO, &ter); 
 	if (ret == -1)
 		perror("ret tcgetattr fail\n");
