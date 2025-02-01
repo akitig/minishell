@@ -6,7 +6,7 @@
 /*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:58:09 by rhonda            #+#    #+#             */
-/*   Updated: 2025/02/01 22:32:03 by rhonda           ###   ########.fr       */
+/*   Updated: 2025/02/01 22:55:28 by rhonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ flagの例
 // struct sigaction {
 //     void     (*sa_handler)(int);
 //     void     (*sa_sigaction)(int, siginfo_t *, void *);
-//     sigset_t   sa_m	act.sa_handler = handler;
+//     sigset_t   sa_mask;
 //     int        sa_flags;
 //     void     (*sa_restorer)(void);
 // };
@@ -89,7 +89,7 @@ int main()
 {
 	struct sigaction act;
 	act.sa_handler = handler;
-	// sigemptyset(&act.sa_mask);
+	sigemptyset(&act.sa_mask);
 	act.sa_flags = 0;
 
 	int result = sigaction(SIGKILL, &act, NULL);
