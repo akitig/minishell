@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   wait3.c                                            :+:      :+:    :+:   */
+/*   wait4.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:58:09 by rhonda            #+#    #+#             */
-/*   Updated: 2025/02/01 18:18:33 by rhonda           ###   ########.fr       */
+/*   Updated: 2025/02/01 18:38:48 by rhonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,30 @@ pid_t wait4(pid_t pid, int *wstatus, int options, struct rusage *rusage);
 // 	else //parent process
 // 	{
 // 		int status;
-// 		struct rusage rusage;
-// 		pid_t child_pid = wait3(&status, 0, &rusage);
+// 		struct rusage usage;
+// 		pid_t child_pid = wait4(pid, &status, 0, &usage);
 
 // 		if (child_pid == -1)
 // 		{
-// 			printf("wait3 failed\n");
+// 			printf("wait4 failed\n");
 // 			return 1;
 // 		}
 // 		if (WIFEXITED(status))
+// 		{
 // 			printf("Child exited with status %d\n", WEXITSTATUS(status));
+// 			printf("============= RESOURCE USAGE =============\n");
+// 			printf("User CPU time: %ld.%06ld seconds\n", 
+//                    usage.ru_utime.tv_sec, usage.ru_utime.tv_sec);
+// 			printf("Resource usage for child process:\n");
+// 			printf("Page faults (minor): %ld\n", usage.ru_minflt);
+//             printf("Page faults (major): %ld\n", usage.ru_majflt);
+// 			printf("Input block operations: %ld\n", usage.ru_inblock);
+//             printf("Output block operations: %ld\n", usage.ru_oublock);
+//             printf("Messages sent: %ld\n", usage.ru_msgsnd);
+//             printf("Messages received: %ld\n", usage.ru_msgrcv);
+//             printf("Signals received: %ld\n", usage.ru_nsignals);
+// 			printf("==========================================\n");
+// 		}
 // 		else
 // 			printf("Child did not exit normally.\n");
 // 	}
@@ -110,32 +124,61 @@ pid_t wait4(pid_t pid, int *wstatus, int options, struct rusage *rusage);
 /* result
 Child process
 Child exited with status 0
+============= RESOURCE USAGE =============
+User CPU time: 0.000000 seconds
+Resource usage for child process:
+Page faults (minor): 31
+Page faults (major): 0
+Input block operations: 0
+Output block operations: 0
+Messages sent: 0
+Messages received: 0
+Signals received: 0
+==========================================
 */
 
 
-// Fail
+// Fail                   -- rusageがNULLでもwaitは成功する
 int main()
 {
 	int status;
 	struct rusage rusage;
-	int result = wait3(&status, 0, &rusage);
+
+	pid_t pid = fork();
+	if (pid == -1)
+	{
+		printf("fork failed\n");
+		return 1;
+	}
+	if (pid == 0)
+		exit(0);
+
+	int result = wait4(420000000, &status, 0, &rusage);
 	if (result == -1)
 	{
-		printf("wait3 failed\n");
+		printf("wait4 failed A\n");
 		printf("Error No.%d\n", errno);
 		printf("Error MSG: %s\n", strerror(errno));
 	}
-	int result2 = wait3(&status, 0, NULL);
+	int result2 = wait4(pid, &status, 0, NULL);
 	if (result2 == -1)
 	{
-		printf("wait3 failed\n");
+		printf("wait4 failed B\n");
 		printf("Error No.%d\n", errno);
 		printf("Error MSG: %s\n", strerror(errno));
 	}
-	int result3 = wait3(NULL, 0, &rusage);
+	else
+	{
+		if (WIFEXITED(status))
+		{
+			printf("wait4 success B\n");
+			printf("Exited with status %d\n", WEXITSTATUS(status));
+		}
+	}
+	int result3 = wait4(pid, NULL, 0, &rusage);
 	if (result3 == -1)
 	{
-		printf("wait3 failed\n");
+		printf("wait4 failed C\n");
 		printf("Error No.%d\n", errno);
 		printf("Error MSG: %s\n", strerror(errno));
 	}
@@ -143,13 +186,12 @@ int main()
 }
 
 /* result
-wait3 failed
+wait4 failed A
 Error No.10
 Error MSG: No child processes
-wait3 failed
-Error No.10
-Error MSG: No child processes
-wait3 failed
+wait4 success B
+Exited with status 0
+wait4 failed C
 Error No.10
 Error MSG: No child processes
 */
