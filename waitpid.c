@@ -6,7 +6,7 @@
 /*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:58:09 by rhonda            #+#    #+#             */
-/*   Updated: 2025/02/01 16:58:27 by rhonda           ###   ########.fr       */
+/*   Updated: 2025/02/01 17:06:59 by rhonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,20 @@ int main()
 		printf("Error No.%d\n", errno);
 		printf("Error MSG: %s\n", strerror(errno));
 	}
+	int result2 = waitpid(420000000, &status, 0);
+	if (result2 == -1)
+	{
+		printf("waitpid failed\n");
+		printf("Error No.%d\n", errno);
+		printf("Error MSG: %s\n", strerror(errno));
+	}
 	return 0;
 }
 
 /* result
+waitpid failed
+Error No.10
+Error MSG: No child processes
 waitpid failed
 Error No.10
 Error MSG: No child processes
