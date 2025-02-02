@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sigemptyset.c                                      :+:      :+:    :+:   */
+/*   sigaddset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhonda <rhonda@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 21:58:09 by rhonda            #+#    #+#             */
-/*   Updated: 2025/02/02 13:07:55 by rhonda           ###   ########.fr       */
+/*   Updated: 2025/02/02 13:33:45 by rhonda           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-int sigemptyset(sigset_t *set);
+ int sigaddset(sigset_t *set, int signum);
 インクルード：<signal.h>
-役割: シグナルセット(sigset_t)を空にし、すべてのシグナルをブロックしない状態にする
+役割: シグナルセット(sigset_t)にシグナルを追加する
 返り値：成功時は0、失敗時は-1(errnoあり)
+
+	使用前にsigemptysetで初期化する必要あり
 */
 
 #include <stdio.h>
@@ -32,60 +34,37 @@ void handler(int signum)
 int main() {
 
 	struct sigaction act;
+
+	sigemptyset(&act.sa_mask);
+
+	if (sigaddset(&act.sa_mask, 56379420) == -1)
+	{
+		printf("sigaddset fail A\n");
+		printf("Error No.%d\n", errno);
+		printf("Error MSG: %s\n", strerror(errno));
+	}
 	
-	act.sa_handler = handler;
-
-	int result3 = sigemptyset(NULL);
-	if (result3 == -1)
+	if (sigaddset(&act.sa_mask, SIGINT) == -1)
 	{
-		printf("sigemptyset result3 fail\n");
+		printf("sigaddset fail B\n");
 		printf("Error No.%d\n", errno);
 		printf("Error MSG: %s\n", strerror(errno));
 	}
-	else
-	{
-		printf("sigemptyset result3 success\n");
-	}
-
-	int result2 = sigemptyset(&act.sa_mask);
-	act.sa_flags = 0;
-	if (result2 == -1)
-	{
-		printf("sigemptyset result2 fail\n");
-		printf("Error No.%d\n", errno);
-		printf("Error MSG: %s\n", strerror(errno));
-	}
-	else
-	{
-		printf("sigemptyset result2 success\n");
-	}
-
-	int result = sigaction(SIGINT, &act, NULL);
-	if (result == -1)
-	{
-		printf("sigaction failed\n");
-		printf("Error No.%d\n", errno);
-		printf("Error MSG: %s\n", strerror(errno));
-		exit(1);
-	}
-	printf("Press Ctrl+C to send SIGINT\n");
 	
-	while (1)
-		sleep(1);
-
+	printf("=====Current signal=====\n");
+	for (int i = 1; i < 64; i++)
+	{
+		if (sigismember(&act.sa_mask, i))
+			printf("Signal No.%d is in the set.\n", i);
+	}
+	
     return 0;
 }
 
 /* result
-sigemptyset result3 fail
+sigaddset fail A
 Error No.22
 Error MSG: Invalid argument
-sigemptyset result2 success
-Press Ctrl+C to send SIGINT
-^CReceived signal 2
-^CReceived signal 2
-^CReceived signal 2
-^CReceived signal 2
-
+=====Current signal=====
+Signal No.2 is in the set.
 */
-
