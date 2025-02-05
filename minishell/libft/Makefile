@@ -6,7 +6,7 @@
 #    By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 08:44:44 by akunimot          #+#    #+#              #
-#    Updated: 2025/01/26 16:28:55 by akunimot         ###   ########.fr        #
+#    Updated: 2025/01/30 07:44:38 by akunimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS      = lib/ft_isalpha.c \
             lib/ft_tolower.c \
             lib/ft_strchr.c \
             lib/ft_strrchr.c \
+            lib/ft_strcmp.c \
             lib/ft_strncmp.c \
             lib/ft_memchr.c \
             lib/ft_memcmp.c \

@@ -6,7 +6,7 @@
 /*   By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 14:37:50 by akunimot          #+#    #+#             */
-/*   Updated: 2025/01/26 16:32:49 by akunimot         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:20:30 by akunimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,6 @@ void	*ft_calloc(size_t count, size_t size)
 		return (NULL);
 	ft_bzero(ptr, size);
 	return (ptr);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	size_t	i;
-
-	i = 0;
-	while (1)
-	{
-		if (s[i] == (char)c)
-			return ((char *)(s + i));
-		if (s[i] == '\0')
-			break ;
-		i++;
-	}
-	return (NULL);
 }
 
 char	*ft_gnl_strjoin(char const *s1, char const *s2)

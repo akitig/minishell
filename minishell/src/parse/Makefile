@@ -6,7 +6,7 @@
 #    By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/04 19:21:54 by akunimot          #+#    #+#              #
-#    Updated: 2025/02/04 19:21:56 by akunimot         ###   ########.fr        #
+#    Updated: 2025/02/05 20:29:58 by akunimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ LIBNAME = libft.a
 SRC = split.c \
       doller.c \
 	  utils.c \
+	  correct.c \
 
 FLAGS = -Wall -Wextra -Werror
 NONE='\033[0m'

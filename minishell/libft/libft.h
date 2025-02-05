@@ -6,7 +6,7 @@
 /*   By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 21:06:05 by akunimot          #+#    #+#             */
-/*   Updated: 2025/01/26 16:33:32 by akunimot         ###   ########.fr       */
+/*   Updated: 2025/01/30 07:45:30 by akunimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ size_t ft_strlen(const char *s);
 
 char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void ft_striteri(char *s, void (*f)(unsigned int, char *));
+int ft_strcmp(const char *s1, const char *s2);
 int ft_strncmp(const char *s1, const char *s2, size_t n);
 char *ft_strnstr(const char *haystack, const char *needle,
 				 size_t len);

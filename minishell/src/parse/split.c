@@ -6,7 +6,7 @@
 /*   By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:40:32 by akunimot          #+#    #+#             */
-/*   Updated: 2025/02/04 19:44:36 by akunimot         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:27:35 by akunimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,19 +231,13 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 
+	str = ft_correct_str(str);
 	res = ft_split_str(str, ' ');
 	ft_check_var(res, env);
 	while (res[i])
 	{
 		printf("%s\n", res[i]);
 		i++;
-	}
-	printf("pipe etc\n");
-	printf("%i\n", ft_array_len(res, "<|>"));
-	printf("Split result:\n");
-	for (int j = 0; res[j]; j++)
-	{
-		printf("[%s]\n", res[j]);
 	}
 	free(res);
 	return (0);

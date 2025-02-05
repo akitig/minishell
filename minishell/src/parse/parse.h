@@ -6,7 +6,7 @@
 /*   By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:53:39 by akunimot          #+#    #+#             */
-/*   Updated: 2025/02/04 19:33:14 by akunimot         ###   ########.fr       */
+/*   Updated: 2025/02/05 20:28:46 by akunimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,8 @@ int ft_array_len(char **s, char *act);
 // split.c
 int ft_array_len(char **array, char *delimiters);
 size_t ft_strlen_var(const char *s);
+
+// correct.c
+char *ft_correct_str(char *str);
 
 #endif
