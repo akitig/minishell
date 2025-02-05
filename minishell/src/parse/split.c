@@ -6,11 +6,21 @@
 /*   By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:40:32 by akunimot          #+#    #+#             */
-/*   Updated: 2025/02/03 23:12:41 by akunimot         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:44:36 by akunimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+
+size_t	ft_strlen_var(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] && s[i] != ' ')
+		i++;
+	return (i);
+}
 
 /*
 static int	ft_word_len(char const *str, char c)
@@ -56,22 +66,6 @@ static void	ft_free_array(char **array, int i)
 	free(array);
 }
 */
-void	ft_mv_in_quote(char const *str, unsigned int *i)
-{
-	char	quote;
-
-	if (str[*i] == '\"' || str[*i] == '\'')
-	{
-		quote = str[*i];
-		(*i)++;
-		while (str[*i])
-		{
-			if (str[*i] == quote)
-				break ;
-			(*i)++;
-		}
-	}
-}
 
 char	*ft_strndup(const char *src, size_t n)
 {
@@ -89,35 +83,6 @@ char	*ft_strndup(const char *src, size_t n)
 	}
 	dst[i] = '\0';
 	return (dst);
-}
-
-static char	*expand_daller(char *word, char **env)
-{
-	int		i;
-	char	*ret;
-
-	i = 0;
-	while (env[i])
-	{
-		if (!ft_strncmp(env[i], word + 1, ft_strlen(word) - 1))
-		{
-			ret = ft_strdup(&env[i][5]);
-			free(word);
-			return (ret);
-		}
-		i++;
-	}
-	return (word);
-}
-
-static void	input_daller(char **str, char **env)
-{
-	while (*str)
-	{
-		if (*str[0] == '$')
-			*str = expand_daller(*str, env);
-		str++;
-	}
 }
 
 int	ft_char_len(char const *s, char c)
@@ -226,73 +191,30 @@ char	**ft_split_str(char const *str, char c)
 	return (array);
 }
 
-int	ft_correct_len(char *str, char *mark)
+void	ft_check_var(char **str, char **env)
 {
-	unsigned int	i;
-	int				extra_mark;
+	int	i;
 
-	i = 0;
-	extra_mark = 0;
-	while (str[i])
+	while (*str)
 	{
-		ft_mv_in_quote(str, &i);
-		if (ft_strchr(mark, str[i]))
-			extra_mark += 2;
-		i++;
-	}
-	// printf("%d %d\n", i, extra_mark);
-	return (i + extra_mark);
-}
-
-void	ft_fix_correct_str(char *ret, char *str, int *i, int *extra)
-{
-	char	quote;
-
-	if (str[*i] == '\"' || str[*i] == '\'')
-	{
-		quote = str[*i];
-		ret[*i + *extra] = str[*i];
-		(*i)++;
-		while (str[*i])
+		i = 0;
+		while (*str && (*str)[i])
 		{
-			ret[*i + *extra] = str[*i];
-			if (str[*i] == quote)
-				break ;
-			(*i)++;
+			if ((*str)[i] == '\'')
+			{
+				i++;
+				while ((*str)[i] != '\'' && (*str)[i])
+					i++;
+			}
+			else if ((*str)[i] == '$')
+			{
+				*str = ft_expand_daller(env, *str, i);
+			}
+			i++;
 		}
-		if (ft_strchr("<>|&", str[*i]))
-		{
-			ret[*i + *extra] = ' ';
-			ret[*i + *extra + 1] = str[*i];
-			ret[*i + *extra + 2] = ' ';
-			(*extra) += 2;
-		}
-		else
-			ret[*i + *extra] = str[*i];
+		str++;
 	}
 }
-
-char	*ft_correct_str(char *str)
-{
-	char	*ret;
-	int		i;
-	int		extra;
-
-	i = 0;
-	extra = 0;
-	ret = malloc(ft_correct_len(str, "<>|&") + 1);
-	if (!ret)
-		return (NULL);
-	while (str[i])
-	{
-		ft_fix_correct_str(ret, str, &i, &extra);
-		i++;
-	}
-	ret[i + extra] = '\0';
-	printf("%c\n", ret[0]);
-	return (ret);
-}
-
 int	main(int argc, char **argv, char **env)
 {
 	// char	*str = "$USER -la | grep \"Ma$USER ke file\"da $HOME";
@@ -300,23 +222,28 @@ int	main(int argc, char **argv, char **env)
 	// char	*str = "ls -l | cat << lim | cat > outfile | cat >> outfile";
 	// char	*str = "ls -l | cat << lim | cat | cat";
 	// char	*str = "ls | cat | cat | cat > file | cat | cat |cat >> outfile";
-	char *str = "$USER -la | gre p \'Ma ke file\' $HOME";
+	char *str = "USER|grep $HOME";
+	// char *str = "$USER -la | gre p \'Ma ke file\' $HOME";
 	char **res;
 	int i;
 
 	i = 0;
 	(void)argc;
 	(void)argv;
-	// str = ft_correct_str(str);
-	printf("%s\n", str);
+
 	res = ft_split_str(str, ' ');
-	input_daller(res, env);
-	// res = ft_correct_special(res, "<>|&");
+	ft_check_var(res, env);
 	while (res[i])
 	{
 		printf("%s\n", res[i]);
-		free(res[i]);
 		i++;
+	}
+	printf("pipe etc\n");
+	printf("%i\n", ft_array_len(res, "<|>"));
+	printf("Split result:\n");
+	for (int j = 0; res[j]; j++)
+	{
+		printf("[%s]\n", res[j]);
 	}
 	free(res);
 	return (0);
