@@ -6,20 +6,26 @@
 #    By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/04 19:21:54 by akunimot          #+#    #+#              #
-#    Updated: 2025/02/05 20:35:38 by akunimot         ###   ########.fr        #
+#    Updated: 2025/02/08 17:27:18 by akunimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME = splitstr
 LIBNAME = libft.a
 SRC = split.c \
       doller.c \
-	  utils.c \
-	  correct.c \
+      utils.c \
+      correct.c \
+      correct_special.c \
+      ## parser.c \
 
 OBJ = $(SRC:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror
+CC = gcc
+#CFLAGS =
+LDFLAGS = -pie
+
 NONE='\033[0m'
 GREEN='\033[32m'
 GRAY='\033[2;37m'
@@ -29,7 +35,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBNAME)
 	@echo $(CURSIVE)$(GRAY) "     - Compiling $(NAME)..." $(NONE)
-	@gcc $(FLAGS) $(OBJ) $(LIBNAME) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) $(LIBNAME) -o $(NAME) $(LDFLAGS)
 	@echo $(GREEN)"- Compiled -"$(NONE)
 
 $(LIBNAME):
@@ -39,7 +45,7 @@ $(LIBNAME):
 	@echo $(GREEN)"- Compiled -"$(NONE)
 
 %.o: %.c
-	$(CC) -c $(FLAGS) $^ -o $@
+	@$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
 	@echo $(CURSIVE)$(GRAY) "     - Removing object files..." $(NONE)
@@ -52,3 +58,4 @@ fclean: clean
 	@rm -rf $(NAME) $(LIBNAME)
 
 re: fclean all
+

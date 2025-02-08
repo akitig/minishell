@@ -6,155 +6,56 @@
 /*   By: akunimot <akitig24@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:40:32 by akunimot          #+#    #+#             */
-/*   Updated: 2025/02/05 20:27:35 by akunimot         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:37:56 by akunimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-size_t	ft_strlen_var(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] && s[i] != ' ')
-		i++;
-	return (i);
-}
-
-/*
-static int	ft_word_len(char const *str, char c)
+int	ft_word_num(char const *s, char c)
 {
 	unsigned int	i;
-	int				len;
-
-	i = 0;
-	len = 0;
-	while (str[i])
-	{
-		if (str[i] != c)
-		{
-			len++;
-			while (str[i] && str[i] != c)
-				i++;
-		}
-		else
-			i++;
-	}
-	return (len);
-}
-static char	*ft_allocate_word(const char *str, char c)
-{
-	int		len;
-	char	*word;
-
-	len = 0;
-	while (str[len] && str[len] != c)
-		len++;
-	word = malloc(sizeof(char) * (len + 1));
-	if (!word)
-		return (NULL);
-	strncpy(word, str, len);
-	word[len] = '\0';
-	return (word);
-}
-
-static void	ft_free_array(char **array, int i)
-{
-	while (i > 0)
-		free(array[--i]);
-	free(array);
-}
-*/
-
-char	*ft_strndup(const char *src, size_t n)
-{
-	char	*dst;
-	size_t	i;
-
-	dst = (char *)malloc(sizeof(char) * (n + 1));
-	if (!dst)
-		return (NULL);
-	i = 0;
-	while (i < n && src[i])
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-}
-
-int	ft_char_len(char const *s, char c)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (s[i] != c && s[i])
-	{
-		ft_mv_in_quote(s, &i);
-		i++;
-	}
-	return (i);
-}
-
-static int	ft_word_num(char const *s, char c)
-{
-	unsigned int	i;
-	unsigned int	flg;
+	unsigned int	flag;
 	int				num;
 
 	i = 0;
-	flg = 0;
+	flag = 0;
 	num = 0;
 	while (s[i])
 	{
 		ft_mv_in_quote(s, &i);
 		if (s[i] != c)
-			flg = 1;
-		else if (flg && s[i] == c)
+			flag = 1;
+		else if (flag && s[i] == c)
 		{
 			num++;
-			flg = 0;
+			flag = 0;
 		}
 		i++;
 	}
-	if (flg)
+	if (flag)
 		num++;
 	return (num);
-}
-
-static char	*ft_fill_word(char *word, char *str, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		word[i] = str[i];
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
 }
 
 static int	ft_split_low(char **array, char const *s, char c)
 {
 	char	*str;
 	char	*word;
-	int		len;
-	int		i;
 
 	str = (char *)s;
-	i = 0;
+	int len, i = 0;
 	while (i < ft_word_num(s, c))
 	{
 		len = ft_char_len(str, c);
 		if (len > 0)
 		{
 			word = malloc(sizeof(char) * (len + 1));
-			if (word == NULL)
+			if (!word)
+			{
+				fprintf(stderr, "Error: malloc failed in ft_split_low()\n");
 				return (i + 1);
+			}
 			word = ft_fill_word(word, str, len);
 			array[i] = word;
 			str += len + 1;
@@ -170,75 +71,141 @@ static int	ft_split_low(char **array, char const *s, char c)
 char	**ft_split_str(char const *str, char c)
 {
 	char	**array;
-	int		err;
-	int		i;
 
-	array = malloc(sizeof(char *) * (ft_word_num(str, c) + 1));
-	if (array == NULL)
-		return (NULL);
-	err = ft_split_low(array, str, c);
-	if (err)
+	int i, words;
+	words = ft_word_num(str, c);
+	array = malloc(sizeof(char *) * (words + 1));
+	if (!array)
 	{
-		i = 0;
-		while (i < err - 1)
-		{
-			free(array[i]);
-			i++;
-		}
+		fprintf(stderr, "Error: malloc failed in ft_split_str()\n");
+		return (NULL);
+	}
+	for (i = 0; i < words + 1; i++)
+		array[i] = NULL;
+	if (ft_split_low(array, str, c))
+	{
+		for (i = 0; i < words; i++)
+			if (array[i])
+				free(array[i]);
 		free(array);
 		return (NULL);
 	}
+	// Debugging output
+	printf("=== Debug: Split Tokens ===\n");
+	for (i = 0; array[i]; i++)
+	{
+		printf("Token[%d]: %s (addr: %p)\n", i, array[i], (void *)array[i]);
+	}
+	printf("===========================\n");
 	return (array);
 }
 
-void	ft_check_var(char **str, char **env)
+#include "parse.h"
+
+int	ft_char_len(char const *s, char c)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] != c && s[i])
+	{
+		ft_mv_in_quote(s, &i);
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_fill_word(char *word, char *str, int len)
 {
 	int	i;
 
-	while (*str)
+	i = 0;
+	while (i < len)
 	{
-		i = 0;
-		while (*str && (*str)[i])
-		{
-			if ((*str)[i] == '\'')
-			{
-				i++;
-				while ((*str)[i] != '\'' && (*str)[i])
-					i++;
-			}
-			else if ((*str)[i] == '$')
-			{
-				*str = ft_expand_daller(env, *str, i);
-			}
-			i++;
-		}
-		str++;
+		word[i] = str[i];
+		i++;
 	}
+	word[i] = '\0';
+	return (word);
 }
+/*
 int	main(int argc, char **argv, char **env)
 {
-	// char	*str = "$USER -la | grep \"Ma$USER ke file\"da $HOME";
-	// char	*str = "ls -la << EOF |awk \"<$HOME d\" | cat";
-	// char	*str = "ls -l | cat << lim | cat > outfile | cat >> outfile";
-	// char	*str = "ls -l | cat << lim | cat | cat";
-	// char	*str = "ls | cat | cat | cat > file | cat | cat |cat >> outfile";
-	char *str = "USER|grep $HOME";
-	// char *str = "$USER -la | gre p \'Ma ke file\' $HOME";
-	char **res;
-	int i;
+	char	*str;
+	char	**res;
+	int		i;
 
+	str = ">>$USER|grep \"<$HOME d\" >file";
 	i = 0;
 	(void)argc;
 	(void)argv;
-
 	str = ft_correct_str(str);
 	res = ft_split_str(str, ' ');
+	if (!res)
+	{
+		perror("Memory allocation failed in ft_split_str()");
+		free(str);
+		return (1);
+	}
+	printf("=== Debug: Split Result ===\n");
+	for (int j = 0; res[j]; j++)
+	{
+		if (res[j] == NULL)
+			printf("Debug: res[%d] is NULL\n", j);
+		else
+			printf("res[%d]: %s\n", j, res[j]);
+	}
+	printf("===========================\n");
 	ft_check_var(res, env);
+	ft_correct_special(res, "<>|&");
+	i = 0;
 	while (res[i])
 	{
+		if (!res[i])
+		{
+			fprintf(stderr, "Error: res[%d] is NULL\n", i);
+			continue ;
+		}
+		if ((uintptr_t)res[i] < 0x1000) // Invalid memory address detection
+		{
+			fprintf(stderr, "Error: res[%d] has an invalid address: %p\n", i,
+				res[i]);
+			continue ;
+		}
 		printf("%s\n", res[i]);
 		i++;
 	}
-	free(res);
+	ft_free_split(res);
+	free(str);
+	return (0);
+}
+*/
+
+int	main(int argc, char **argv, char **env)
+{
+	char	*str1;
+	char	*str2;
+	char	*str3;
+
+	str1 = ft_strdup(">>$USER|grep \"<$HOME d\" >file");
+	str2 = ft_strdup("'$USER' \"$HOME\"");
+	str3 = ft_strdup("echo \"$USER\" | grep 'home'");
+	(void)argc;
+	(void)argv;
+	printf("\n=== Before Expansion ===\n");
+	printf("str1: %s\n", str1);
+	printf("str2: %s\n", str2);
+	printf("str3: %s\n", str3);
+	fflush(stdout);
+	input_daller(&str1, env);
+	input_daller(&str2, env);
+	input_daller(&str3, env);
+	printf("\n=== After Expansion ===\n");
+	printf("str1: %s\n", str1);
+	printf("str2: %s\n", str2);
+	printf("str3: %s\n", str3);
+	free(str1);
+	free(str2);
+	free(str3);
 	return (0);
 }
