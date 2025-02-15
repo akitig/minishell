@@ -1,0 +1,1626 @@
+[]                                                                    :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1 +0,0 @@
+-minishell> exit
+[\t]                                                                  :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1 +0,0 @@
+-minishell> exit
+[ ]                                                                   :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +0,0 @@
+-minishell>  
+-minishell> exit
+[/bin/pwd]                                                            :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,3 +1 @@
+-minishell> /bin/pwd
+ /Users/akitig/Main/42/honda/minishell
+-minishell> exit
+[/bin/echo]                                                           :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,3 +1 @@
+-minishell> /bin/echo
+ 
+-minishell> exit
+[/bin/ls]                                                             :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +1 @@
+-minishell> /bin/ls
+ Makefile
+@@ -21,2 +20 @@
+ test.sh
+-minishell> exit
+[/bin/pwd ..]                                                         :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +0,0 @@
+-minishell> /bin/pwd ..
+-minishell> exit
+[/bin/pwd ..]                                                         :status NG, expected 1 but got 0
+[/bin/echo test.sh test.sh]                                           :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,3 +1 @@
+-minishell> /bin/echo test.sh test.sh
+ test.sh test.sh
+-minishell> exit
+[/bin/ls src]                                                         :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +0,0 @@
+-minishell> /bin/ls src
+-minishell> exit
+[/bin/ls src]                                                         :status NG, expected 1 but got 0
+[/bin/../bin/pwd]                                                     :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,3 +1 @@
+-minishell> /bin/../bin/pwd
+ /Users/akitig/Main/42/honda/minishell
+-minishell> exit
+[/bin/../bin/echo]                                                    :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,3 +1 @@
+-minishell> /bin/../bin/echo
+ 
+-minishell> exit
+[/bin/../bin/ls]                                                      :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +1 @@
+-minishell> /bin/../bin/ls
+ Makefile
+@@ -21,2 +20 @@
+ test.sh
+-minishell> exit
+[pwd]                                                                 :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,3 +1 @@
+-minishell> pwd
+ /Users/akitig/Main/42/honda/minishell
+-minishell> exit
+[echo]                                                                :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,3 +1 @@
+-minishell> echo
+ 
+-minishell> exit
+[ls]                                                                  :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +1 @@
+-minishell> ls
+ Makefile
+@@ -21,2 +20 @@
+ test.sh
+-minishell> exit
+[./a.out]                                                             :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,3 +1 @@
+-minishell> ./a.out
+ hello from a.out
+-minishell> exit
+[a.out]                                                               :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +0,0 @@
+-minishell> a.out
+-minishell> exit
+[a.out]                                                               :status NG, expected 127 but got 0
+[nosuchfile]                                                          :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +0,0 @@
+-minishell> nosuchfile
+-minishell> exit
+[nosuchfile]                                                          :status NG, expected 127 but got 0
+[yeah]                                                                :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +0,0 @@
+-minishell> yeah
+-minishell> exit
+[yeah]                                                                :status NG, expected 127 but got 0
+[""]                                                                  :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +0,0 @@
+-minishell> ""
+-minishell> exit
+[""]                                                                  :status NG, expected 127 but got 0
+[..]                                                                  :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +0,0 @@
+-minishell> ..
+-minishell> exit
+[..]                                                                  :status NG, expected 127 but got 0
+[./]                                                                  :
+--- out	2025-02-14 23:15:52
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +0,0 @@
+-minishell> ./
+-minishell> exit
+[./]                                                                  :status NG, expected 126 but got 0
+[/]                                                                   :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:52
+@@ -1,2 +0,0 @@
+-minishell> /
+-minishell> exit
+[/]                                                                   :status NG, expected 126 but got 0
+[/etc]                                                                :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,2 +0,0 @@
+-minishell> /etc
+-minishell> exit
+[/etc]                                                                :status NG, expected 126 but got 0
+[/etc/]                                                               :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,2 +0,0 @@
+-minishell> /etc/
+-minishell> exit
+[/etc/]                                                               :status NG, expected 126 but got 0
+[////]                                                                :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,2 +0,0 @@
+-minishell> ////
+-minishell> exit
+[////]                                                                :status NG, expected 126 but got 0
+[no_exec_perm]                                                        :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,2 +0,0 @@
+-minishell> no_exec_perm
+-minishell> exit
+[no_exec_perm]                                                        :status NG, expected 127 but got 0
+[./no_exec_perm]                                                      :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,2 +0,0 @@
+-minishell> ./no_exec_perm
+-minishell> exit
+[./no_exec_perm]                                                      :status NG, expected 126 but got 0
+[no_read_perm]                                                        :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,2 +0,0 @@
+-minishell> no_read_perm
+-minishell> exit
+[no_read_perm]                                                        :status NG, expected 127 but got 0
+[./no_read_perm]                                                      :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,2 +0,0 @@
+-minishell> ./no_read_perm
+-minishell> exit
+[unset PATH\nexport PATH="/tmp/a:/tmp/b"\nsimple_test]                :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,4 +0,0 @@
+-minishell> unset PATH
+-minishell> export PATH="/tmp/a:/tmp/b"
+-minishell> simple_test
+-minishell> exit
+[unset PATH\nexport PATH="/tmp/a:/tmp/b"\nsimple_test]                :status NG, expected 1 but got 0
+[unset PATH\nexport PATH="/tmp/b:/tmp/a"\nsimple_test]                :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,4 +0,0 @@
+-minishell> unset PATH
+-minishell> export PATH="/tmp/b:/tmp/a"
+-minishell> simple_test
+-minishell> exit
+[unset PATH\nexport PATH="/tmp/b:/tmp/a"\nsimple_test]                :status NG, expected 2 but got 0
+[unset PATH\nexport PATH="/tmp/a:/tmp/b"\nsimple_test]                :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,4 +0,0 @@
+-minishell> unset PATH
+-minishell> export PATH="/tmp/a:/tmp/b"
+-minishell> simple_test
+-minishell> exit
+[unset PATH\nexport PATH="/tmp/a:/tmp/b"\nsimple_test]                :status NG, expected 126 but got 0
+[unset PATH\nexport PATH="/tmp/b:/tmp/a"\nsimple_test]                :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,4 +0,0 @@
+-minishell> unset PATH
+-minishell> export PATH="/tmp/b:/tmp/a"
+-minishell> simple_test
+-minishell> exit
+[unset PATH\nexport PATH="/tmp/b:/tmp/a"\nsimple_test]                :status NG, expected 126 but got 0
+[unset PATH\nexport PATH="/tmp/a:/tmp/b"\nsimple_test]                :
+--- out	2025-02-14 23:15:53
++++ cmp	2025-02-14 23:15:53
+@@ -1,4 +0,0 @@
+-minishell> unset PATH
+-minishell> export PATH="/tmp/a:/tmp/b"
+-minishell> simple_test
+-minishell> exit
+[unset PATH\nexport PATH="/tmp/a:/tmp/b"\nsimple_test]                :status NG, expected 1 but got 0
+[unset PATH\nexport PATH="/tmp/b:/tmp/a"\nsimple_test]                :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:53
+@@ -1,4 +0,0 @@
+-minishell> unset PATH
+-minishell> export PATH="/tmp/b:/tmp/a"
+-minishell> simple_test
+-minishell> exit
+[unset PATH\nexport PATH="/tmp/b:/tmp/a"\nsimple_test]                :status NG, expected 1 but got 0
+[unset PATH\nexport PATH="/tmp/a:/tmp/b"\nsimple_test]                :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,4 +0,0 @@
+-minishell> unset PATH
+-minishell> export PATH="/tmp/a:/tmp/b"
+-minishell> simple_test
+-minishell> exit
+[unset PATH\nexport PATH="/tmp/a:/tmp/b"\nsimple_test]                :status NG, expected 2 but got 0
+[unset PATH\nexport PATH="/tmp/b:/tmp/a"\nsimple_test]                :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,4 +0,0 @@
+-minishell> unset PATH
+-minishell> export PATH="/tmp/b:/tmp/a"
+-minishell> simple_test
+-minishell> exit
+[unset PATH\nexport PATH="/tmp/b:/tmp/a"\nsimple_test]                :status NG, expected 2 but got 0
+[ls /]                                                                :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +1 @@
+-minishell> ls /
+ Applications
+@@ -17,2 +16 @@
+ var
+-minishell> exit
+[echo hello    world     ]                                            :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +1 @@
+-minishell> echo hello    world     
+ hello world
+-minishell> exit
+[nosuchfile\n\n]                                                      :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +0,0 @@
+-minishell> nosuchfile
+-minishell> 
+-minishell> exit
+[nosuchfile\n\n]                                                      :status NG, expected 127 but got 0
+[./print_args 'hello   world' '42Tokyo']                              :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +1 @@
+-minishell> ./print_args 'hello   world' '42Tokyo'
+ argv[0] = [./print_args]
+@@ -4,2 +3 @@
+ argv[2] = [42Tokyo]
+-minishell> exit
+[echo 'hello   world' '42Tokyo']                                      :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +1 @@
+-minishell> echo 'hello   world' '42Tokyo'
+ hello   world 42Tokyo
+-minishell> exit
+[echo '"hello   world"' '42Tokyo']                                    :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +1 @@
+-minishell> echo '"hello   world"' '42Tokyo'
+ "hello   world" 42Tokyo
+-minishell> exit
+[./print_args 'ls | grep Makefile']                                   :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,4 +1,2 @@
+-minishell> ./print_args 'ls | grep Makefile'
+ argv[0] = [./print_args]
+ argv[1] = [ls | grep Makefile]
+-minishell> exit
+[echo 'ls | grep Makefile']                                           :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +1 @@
+-minishell> echo 'ls | grep Makefile'
+ ls | grep Makefile
+-minishell> exit
+[./print_args "hello   world" "42Tokyo"]                              :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +1 @@
+-minishell> ./print_args "hello   world" "42Tokyo"
+ argv[0] = [./print_args]
+@@ -4,2 +3 @@
+ argv[2] = [42Tokyo]
+-minishell> exit
+[echo "hello   world" "42Tokyo"]                                      :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +1 @@
+-minishell> echo "hello   world" "42Tokyo"
+ hello   world 42Tokyo
+-minishell> exit
+[echo "'hello   world'" "42Tokyo"]                                    :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +1 @@
+-minishell> echo "'hello   world'" "42Tokyo"
+ 'hello   world' 42Tokyo
+-minishell> exit
+[./print_args "cat test.sh | cat > lol.c"]                            :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,4 +1,2 @@
+-minishell> ./print_args "cat test.sh | cat > lol.c"
+ argv[0] = [./print_args]
+ argv[1] = [cat test.sh | cat > lol.c]
+-minishell> exit
+[echo "cat test.sh | cat > lol.c"]                                    :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +1 @@
+-minishell> echo "cat test.sh | cat > lol.c"
+ cat test.sh | cat > lol.c
+-minishell> exit
+[echo hello'      world']                                             :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +1 @@
+-minishell> echo hello'      world'
+ hello      world
+-minishell> exit
+[echo hello'  world  '"  42Tokyo  "]                                  :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +1 @@
+-minishell> echo hello'  world  '"  42Tokyo  "
+ hello  world    42Tokyo  
+-minishell> exit
+[<<<<]                                                                :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +0,0 @@
+-minishell> <<<<
+-> minishell> exit
+[<<<<]                                                                :status NG, expected 2 but got 0
+[<<]                                                                  :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +0,0 @@
+-minishell> <<
+-> minishell> exit
+[<<]                                                                  :status NG, expected 2 but got 0
+[<]                                                                   :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +0,0 @@
+-minishell> <
+-minishell> exit
+[<]                                                                   :status NG, expected 2 but got 0
+[echo hello >hello.txt]                                               :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +0,0 @@
+-minishell> echo hello >hello.txt
+-minishell> exit
+[echo hello >f1>f2>f3]                                                :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +0,0 @@
+-minishell> echo hello >f1>f2>f3
+-minishell> exit
+[echo hello >f1>>f2>f3]                                               :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +0,0 @@
+-minishell> echo hello >f1>>f2>f3
+-minishell> exit
+[cat <Makefile]                                                       :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +1 @@
+-minishell> cat <Makefile
+ NAME = minishell
+@@ -61,2 +60 @@
+ .PHONY: all clean fclean re test
+-minishell> exit
+[cat <f1<f2<f3]                                                       :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +1 @@
+-minishell> cat <f1<f2<f3
+ 42Tokyo
+-minishell> exit
+[cat <hoge]                                                           :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +0,0 @@
+-minishell> cat <hoge
+-minishell> exit
+[cat <hoge]                                                           :status NG, expected 1 but got 0
+[pwd >>pwd.txt]                                                       :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +0,0 @@
+-minishell> pwd >>pwd.txt
+-minishell> exit
+[pwd >>pwd.txt >>pwd.txt]                                             :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +0,0 @@
+-minishell> pwd >>pwd.txt >>pwd.txt
+-minishell> exit
+[pwd >>pwd.txt >>pwd2.txt]                                            :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +0,0 @@
+-minishell> pwd >>pwd.txt >>pwd2.txt
+-minishell> exit
+[pwd >>pwd.txt \n pwd >>pwd.txt]                                      :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,3 +0,0 @@
+-minishell> pwd >>pwd.txt 
+-minishell>  pwd >>pwd.txt
+-minishell> exit
+[cat <<EOF\nhello\nworld\nEOF\nNOPRINT]                               :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,8 +1,2 @@
+-minishell> cat <<EOF
+-> hello
+-> world
+-> EOF
+ hello
+ world
+-minishell> NOPRINT
+-minishell> exit
+[cat <<EOF\nhello\nworld\nEOF\nNOPRINT]                               :status NG, expected 127 but got 0
+[cat <<EOF<<eof\nhello\nworld\nEOF\neof\nNOPRINT]                     :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,10 +0,0 @@
+-minishell> cat <<EOF<<eof
+-> hello
+-> world
+-> EOF
+-> eof
+-hello
+-world
+-EOF
+-minishell> NOPRINT
+-minishell> exit
+[cat <<EOF<<eof\nhello\nworld\nEOF\neof\nNOPRINT]                     :status NG, expected 127 but got 0
+[cat <<EOF\nhello\nworld]                                             :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,6 +1,2 @@
+-minishell> cat <<EOF
+-> hello
+-> world
+-> hello
++hello
+ world
+-minishell> exit
+[cat <<E"O"F\nhello\nworld\nEOF\nNOPRINT]                             :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,8 +1,2 @@
+-minishell> cat <<E"O"F
+-> hello
+-> world
+-> EOF
+ hello
+ world
+-minishell> NOPRINT
+-minishell> exit
+[cat <<E"O"F\nhello\nworld\nEOF\nNOPRINT]                             :status NG, expected 127 but got 0
+[cat <<EOF   \n$USER\n$NO_SUCH_VAR\n$FOO$BAR\nEOF]                    :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,6 +1 @@
+-minishell> cat <<EOF   
+-> $USER
+-> $NO_SUCH_VAR
+-> $FOO$BAR
+-> EOF
+ akitig
+@@ -8,2 +3 @@
+ 
+-minishell> exit
+[cat <<"EOF" \n$USER\n$NO_SUCH_VAR\n$FOO$BAR\nEOF]                    :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,9 +1,3 @@
+-minishell> cat <<"EOF" 
+-> $USER
+-> $NO_SUCH_VAR
+-> $FOO$BAR
+-> EOF
+-akitig
+-
+-
+-minishell> exit
++$USER
++$NO_SUCH_VAR
++$FOO$BAR
+[cat <<EO"F" \n$USER\n$NO_SUCH_VAR\n$FOO$BAR\nEOF]                    :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,9 +1,3 @@
+-minishell> cat <<EO"F" 
+-> $USER
+-> $NO_SUCH_VAR
+-> $FOO$BAR
+-> EOF
+-akitig
+-
+-
+-minishell> exit
++$USER
++$NO_SUCH_VAR
++$FOO$BAR
+[cat <<$EOF         \neof\n$EOF\nEOF]                                 :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,5 +1 @@
+-minishell> cat <<$EOF         
+-> eof
+-minishell> $EOF
+-minishell> EOF
+-minishell> exit
++eof
+[cat <<$EOF         \neof\n$EOF\nEOF]                                 :status NG, expected 127 but got 0
+[cat <<"$EOF"       \neof\n$EOF\nEOF]                                 :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,5 +1 @@
+-minishell> cat <<"$EOF"       
+-> eof
+-minishell> $EOF
+-minishell> EOF
+-minishell> exit
++eof
+[cat <<"$EOF"       \neof\n$EOF\nEOF]                                 :status NG, expected 127 but got 0
+[cat Makefile | grep minishell | sort]                                :
+--- out	2025-02-14 23:15:54
++++ cmp	2025-02-14 23:15:54
+@@ -1,4 +1,2 @@
+-minishell> cat Makefile | grep minishell | sort
+ 	@echo "minishell compiled."
+ NAME = minishell
+-minishell> exit
+[cat | cat | ls\n\n]                                                  :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:54
+@@ -1,2 +1 @@
+-minishell> cat | cat | ls
+ Makefile
+@@ -24,2 +23 @@
+ test.sh
+-minishell> exit
+[ls aefawefae | grep error | sort]                                    :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,2 +0,0 @@
+-minishell> ls aefawefae | grep error | sort
+-minishell> exit
+[echo $USER]                                                          :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +1 @@
+-minishell> echo $USER
+ akitig
+-minishell> exit
+[echo $USER$PATH$TERM]                                                :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +1 @@
+-minishell> echo $USER$PATH$TERM
+ akitig/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/opt/homebrew/opt/tcl-tk/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/opt/git:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/akitig/.local/binxterm-256color
+-minishell> exit
+[echo "$USER  $PATH   $TERM"]                                         :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +1 @@
+-minishell> echo "$USER  $PATH   $TERM"
+ akitig  /usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/opt/homebrew/opt/tcl-tk/bin:/opt/homebrew/opt/openjdk/bin:/opt/homebrew/opt/git:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/akitig/.local/bin   xterm-256color
+-minishell> exit
+[echo $?]                                                             :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +1 @@
+-minishell> echo $?
+ 0
+-minishell> exit
+[invalid\necho $?\necho $?]                                           :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,6 +1,2 @@
+-minishell> invalid
+-minishell> echo $?
+ 127
+-minishell> echo $?
+ 0
+-minishell> exit
+[exit42\necho $?\necho $?]                                            :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,6 +1,2 @@
+-minishell> exit42
+-minishell> echo $?
+ 127
+-minishell> echo $?
+ 0
+-minishell> exit
+[exit42\n\necho $?\necho $?]                                          :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,7 +1,2 @@
+-minishell> exit42
+-minishell> 
+-minishell> echo $?
+ 127
+-minishell> echo $?
+ 0
+-minishell> exit
+[ls \nexit \necho $?]                                                 :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,2 +1 @@
+-minishell> ls 
+ Makefile
+@@ -24,6 +23 @@
+ test.sh
+-minishell> exit 
+-exit
+-minishell> echo $?
+-0
+-minishell> exit
+[expr $? + $?]                                                        :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +1 @@
+-minishell> expr $? + $?
+ 0
+-minishell> exit
+[expr $? + $?]                                                        :status NG, expected 1 but got 0
+[./infinite_loop]                                                     :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1 +0,0 @@
+-minishell> ./infinite_loop
+[./infinite_loop]                                                     :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,2 +0,0 @@
+-minishell> ./infinite_loop
+-minishell> ./infinite_loop
+\ No newline at end of file
+[./infinite_loop]                                                     :status NG, expected 131 but got 143
+[./infinite_loop]                                                     :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> ./infinite_loop
+-
+-minishell> 
+\ No newline at end of file
+[./infinite_loop]                                                     :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,2 +0,0 @@
+-minishell> ./infinite_loop
+-minishell> exit
+[./infinite_loop]                                                     :status NG, expected 143 but got 0
+[./infinite_loop]                                                     :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,2 +0,0 @@
+-minishell> ./infinite_loop
+-minishell> exit
+[./infinite_loop]                                                     :status NG, expected 130 but got 0
+[./infinite_loop]                                                     :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,2 +0,0 @@
+-minishell> ./infinite_loop
+-minishell> exit
+[./infinite_loop]                                                     :status NG, expected 131 but got 0
+[./infinite_loop]                                                     :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,2 +0,0 @@
+-minishell> ./infinite_loop
+-minishell> exit
+[./infinite_loop]                                                     :status NG, expected 158 but got 0
+[exit]                                                                :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit
+-exit
+-minishell> exit
+[exit 42]                                                             :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit 42
+-exit
+-minishell> exit
+[exit 42]                                                             :status NG, expected 42 but got 0
+[exit "42"]                                                           :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit "42"
+-exit
+-minishell> exit
+[exit "42"]                                                           :status NG, expected 42 but got 0
+[exit -42]                                                            :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit -42
+-exit
+-minishell> exit
+[exit -42]                                                            :status NG, expected 214 but got 0
+[exit +42]                                                            :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit +42
+-exit
+-minishell> exit
+[exit +42]                                                            :status NG, expected 42 but got 0
+[exit ""]                                                             :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit ""
+-exit
+-minishell> exit
+[exit ""]                                                             :status NG, expected 255 but got 0
+[exit hello]                                                          :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit hello
+-exit
+-minishell> exit
+[exit hello]                                                          :status NG, expected 255 but got 0
+[exit 42Tokyo]                                                        :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit 42Tokyo
+-exit
+-minishell> exit
+[exit 42Tokyo]                                                        :status NG, expected 255 but got 0
+[exit 1 2]                                                            :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit 1 2
+-exit
+-minishell> exit
+[exit 1 2]                                                            :status NG, expected 1 but got 0
+[exit 9223372036854775806]                                            :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit 9223372036854775806
+-exit
+-minishell> exit
+[exit 9223372036854775806]                                            :status NG, expected 254 but got 0
+[exit 9223372036854775807]                                            :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit 9223372036854775807
+-exit
+-minishell> exit
+[exit 9223372036854775807]                                            :status NG, expected 255 but got 0
+[exit 9223372036854775808]                                            :
+--- out	2025-02-14 23:15:55
++++ cmp	2025-02-14 23:15:55
+@@ -1,3 +0,0 @@
+-minishell> exit 9223372036854775808
+-exit
+-minishell> exit
+[exit 9223372036854775808]                                            :status NG, expected 255 but got 0
+[exit -9223372036854775807]                                           :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit -9223372036854775807
+-exit
+-minishell> exit
+[exit -9223372036854775807]                                           :status NG, expected 1 but got 0
+[exit -9223372036854775808]                                           :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit -9223372036854775808
+-exit
+-minishell> exit
+[exit -9223372036854775809]                                           :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit -9223372036854775809
+-exit
+-minishell> exit
+[exit -9223372036854775809]                                           :status NG, expected 255 but got 0
+[exit " \t \n 42 \t \n "]                                             :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,5 +0,0 @@
+-minishell> exit "  
+-exit
+-minishell>  42  
+-minishell>  "
+-minishell> exit
+[exit " \t \n 42 \t \n "]                                             :status NG, expected 255 but got 0
+[exit "42 \t"]                                                        :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit "42 "
+-exit
+-minishell> exit
+[exit "42 \t"]                                                        :status NG, expected 42 but got 0
+[exit " 42 "]                                                         :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit " 42 "
+-exit
+-minishell> exit
+[exit " 42 "]                                                         :status NG, expected 42 but got 0
+[exit " 42"]                                                          :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit " 42"
+-exit
+-minishell> exit
+[exit " 42"]                                                          :status NG, expected 42 but got 0
+[exit " \t 42"]                                                       :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit "  42"
+-exit
+-minishell> exit
+[exit " \t 42"]                                                       :status NG, expected 42 but got 0
+[exit "\t42\t"]                                                       :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit "42"
+-exit
+-minishell> exit
+[exit "\t42\t"]                                                       :status NG, expected 42 but got 0
+[exit "\t42"]                                                         :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit "42"
+-exit
+-minishell> exit
+[exit "\t42"]                                                         :status NG, expected 42 but got 0
+[exit "\t\t42"]                                                       :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,11 +0,0 @@
+-minishell> exit "
+-.DS_Store         cmp_err           minishell         print_args
+-._.DS_Store       combination_test/ minishell_tester/ pwd2.txt
+-Makefile          error.log         no_exec_perm      sample/
+-a                 exit42            no_read_perm      srcs/
+-a.out             includes/         objs/             test.sh
+-abc               infinite_loop     out               
+-cmp               libft/            out_err           
+-minishell> exit "42"
+-exit
+-minishell> exit
+[exit "\t\t42"]                                                       :status NG, expected 42 but got 0
+[exit "\t\f42"]                                                       :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit "[H[2Jminishell> exit "42"
+-exit
+-minishell> exit
+[exit "\t\f42"]                                                       :status NG, expected 42 but got 0
+[exit "\t\v42"]                                                       :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit "42"
+-exit
+-minishell> exit
+[exit "\t\v42"]                                                       :status NG, expected 42 but got 0
+[exit 4 2]                                                            :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit 4 2
+-exit
+-minishell> exit
+[exit 4 2]                                                            :status NG, expected 1 but got 0
+[exit 1 a]                                                            :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit 1 a
+-exit
+-minishell> exit
+[exit 1 a]                                                            :status NG, expected 1 but got 0
+[exit a]                                                              :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit a
+-exit
+-minishell> exit
+[exit a]                                                              :status NG, expected 255 but got 0
+[exit a a]                                                            :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit a a
+-exit
+-minishell> exit
+[exit a a]                                                            :status NG, expected 255 but got 0
+[exit a 3]                                                            :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit a 3
+-exit
+-minishell> exit
+[exit a 3]                                                            :status NG, expected 255 but got 0
+[exit a a 3]                                                          :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit a a 3
+-exit
+-minishell> exit
+[exit a a 3]                                                          :status NG, expected 255 but got 0
+[exit a 3 4]                                                          :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> exit a 3 4
+-exit
+-minishell> exit
+[exit a 3 4]                                                          :status NG, expected 255 but got 0
+[export | grep nosuch | sort]                                         :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> export | grep nosuch | sort
+-minishell> exit
+[export nosuch\n export | grep nosuch | sort]                         :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +1 @@
+-minishell> export nosuch
+-minishell>  export | grep nosuch | sort
+-minishell> exit
++declare -x nosuch
+[export nosuch=fuga\n export | grep nosuch | sort]                    :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +1 @@
+-minishell> export nosuch=fuga
+-minishell>  export | grep nosuch | sort
+-minishell> exit
++declare -x nosuch="fuga"
+[export nosuch=fuga hoge=nosuch\n export | grep nosuch | sort]        :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +1,2 @@
+-minishell> export nosuch=fuga hoge=nosuch
+-minishell>  export | grep nosuch | sort
+-minishell> exit
++declare -x hoge="nosuch"
++declare -x nosuch="fuga"
+[export [invalid]]                                                    :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> export [invalid]
+-minishell> exit
+[export [invalid_nosuch]\n export | grep nosuch | sort]               :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> export [invalid_nosuch]
+-minishell>  export | grep nosuch | sort
+-minishell> exit
+[export [invalid]=nosuch\n export | grep nosuch | sort]               :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> export [invalid]=nosuch
+-minishell>  export | grep nosuch | sort
+-minishell> exit
+[export [invalid] nosuch hoge=nosuch\n export | grep nosuch | sort]   :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +1,2 @@
+-minishell> export [invalid] nosuch hoge=nosuch
+-minishell>  export | grep nosuch | sort
+-minishell> exit
++declare -x hoge="nosuch"
++declare -x nosuch
+[export nosuch [invalid] hoge=nosuch\n export | grep nosuch | sort]   :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +1,2 @@
+-minishell> export nosuch [invalid] hoge=nosuch
+-minishell>  export | grep nosuch | sort
+-minishell> exit
++declare -x hoge="nosuch"
++declare -x nosuch
+[export nosuch hoge=nosuch [invalid]\n export | grep nosuch | sort]   :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +1,2 @@
+-minishell> export nosuch hoge=nosuch [invalid]
+-minishell>  export | grep nosuch | sort
+-minishell> exit
++declare -x hoge="nosuch"
++declare -x nosuch
+[export nosuch="nosuch2=hoge"\nexport $nosuch\n export | grep nosuch | sort]:
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1,2 @@
+-minishell> export nosuch="nosuch2=hoge"
+-minishell> export $nosuch
+-minishell>  export | grep nosuch | sort
+-minishell> exit
++declare -x nosuch2="hoge"
++declare -x nosuch="nosuch2=hoge"
+[export %]                                                            :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> export %
+-minishell> exit
+[export %]                                                            :status NG, expected 1 but got 0
+[export hogehoge/n export | grep hogehoge]                            :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> export hogehoge/n export | grep hogehoge
+-minishell> exit
+[export hogehoge/n export | grep hogehoge]                            :status NG, expected 1 but got 0
+[export hogehoge\n env | grep hogehoge]                               :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> export hogehoge
+-minishell>  env | grep hogehoge
+-minishell> exit
+[export hogehoge\n env | grep hogehoge]                               :status NG, expected 1 but got 0
+[export mogumogu=/n export | grep mogumogu]                           :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> export mogumogu=/n export | grep mogumogu
+-minishell> exit
+[export mogumogu=/n export | grep mogumogu]                           :status NG, expected 1 but got 0
+[export mogumogu\n env | grep mogumogu]                               :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> export mogumogu
+-minishell>  env | grep mogumogu
+-minishell> exit
+[export mogumogu\n env | grep mogumogu]                               :status NG, expected 1 but got 0
+[unset]                                                               :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> unset
+-minishell> exit
+[unset hoge]                                                          :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> unset hoge
+-minishell> exit
+[unset fuga]                                                          :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> unset fuga
+-minishell> exit
+[unset nosuch]                                                        :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> unset nosuch
+-minishell> exit
+[unset [invalid]]                                                     :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> unset [invalid]
+-minishell> exit
+[unset hoge fuga]                                                     :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> unset hoge fuga
+-minishell> exit
+[unset hoge nosuch fuga]                                              :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> unset hoge nosuch fuga
+-minishell> exit
+[unset fuga \n export | echo $fuga]                                   :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> unset fuga 
+-minishell>  export | echo $fuga
+-fuga
+-minishell> exit
++
+[unset [invalid] fuga \n echo $fuga]                                  :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> unset [invalid] fuga 
+-minishell>  echo $fuga
+-fuga
+-minishell> exit
++
+[env | grep PWD | sort]                                               :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +1 @@
+-minishell> env | grep PWD | sort
+ PWD=/Users/akitig/Main/42/honda/minishell
+-minishell> exit
+[cd]                                                                  :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> cd
+-minishell> exit
+[cd .]                                                                :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> cd .
+-minishell> exit
+[cd ..]                                                               :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> cd ..
+-minishell> exit
+[cd ///]                                                              :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> cd ///
+-minishell> exit
+[cd /tmp]                                                             :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> cd /tmp
+-minishell> exit
+[cd /tmp/]                                                            :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> cd /tmp/
+-minishell> exit
+[cd /tmp///]                                                          :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> cd /tmp///
+-minishell> exit
+[cd /../../../././.././]                                              :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> cd /../../../././.././
+-minishell> exit
+[cd src]                                                              :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> cd src
+-minishell> exit
+[cd src]                                                              :status NG, expected 1 but got 0
+[unset HOME\ncd]                                                      :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +0,0 @@
+-minishell> unset HOME
+-minishell> cd
+-minishell> exit
+[unset HOME\ncd]                                                      :status NG, expected 1 but got 0
+[cd \n echo $PWD]                                                     :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> cd 
+-minishell>  echo $PWD
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/Users/akitig
+[cd \n echo $PWD]                                                     :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> cd 
+-minishell>  echo $PWD
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/Users/akitig
+[cd .\n echo $PWD]                                                    :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> cd .
+-minishell>  echo $PWD
+ /Users/akitig/Main/42/honda/minishell
+-minishell> exit
+[cd ..\n echo $PWD]                                                   :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> cd ..
+-minishell>  echo $PWD
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/Users/akitig/Main/42/honda
+[cd ///\n echo $PWD]                                                  :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> cd ///
+-minishell>  echo $PWD
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/
+[cd /tmp\n echo $PWD]                                                 :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> cd /tmp
+-minishell>  echo $PWD
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/tmp
+[cd /tmp/\n echo $PWD]                                                :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> cd /tmp/
+-minishell>  echo $PWD
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/tmp
+[cd /tmp///\n echo $PWD]                                              :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> cd /tmp///
+-minishell>  echo $PWD
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/tmp
+[cd /../../../././.././\n echo $PWD]                                  :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> cd /../../../././.././
+-minishell>  echo $PWD
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/
+[cd src\n echo $PWD]                                                  :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,4 +1 @@
+-minishell> cd src
+-minishell>  echo $PWD
+ /Users/akitig/Main/42/honda/minishell
+-minishell> exit
+[unset HOME\ncd \n echo $PWD]                                         :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,5 +1 @@
+-minishell> unset HOME
+-minishell> cd 
+-minishell>  echo $PWD
+ /Users/akitig/Main/42/honda/minishell
+-minishell> exit
+[echo]                                                                :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +1 @@
+-minishell> echo
+ 
+-minishell> exit
+[echo hello]                                                          :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +1 @@
+-minishell> echo hello
+ hello
+-minishell> exit
+[echo hello "    " world]                                             :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,3 +1 @@
+-minishell> echo hello "    " world
+ hello      world
+-minishell> exit
+[echo -n]                                                             :
+--- out	2025-02-14 23:15:56
++++ cmp	2025-02-14 23:15:56
+@@ -1,2 +0,0 @@
+-minishell> echo -n
+-minishell> exit
+[echo -n hello]                                                       :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,2 +1 @@
+-minishell> echo -n hello
+-hellominishell> exit
++hello
+\ No newline at end of file
+[echo -n hello world]                                                 :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,2 +1 @@
+-minishell> echo -n hello world
+-hello worldminishell> exit
++hello world
+\ No newline at end of file
+[echo hello -n]                                                       :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> echo hello -n
+ hello -n
+-minishell> exit
+[echo -nn]                                                            :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +0,0 @@
+-minishell> echo -nn
+--nn
+-minishell> exit
+[echo -nnn]                                                           :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +0,0 @@
+-minishell> echo -nnn
+--nnn
+-minishell> exit
+[echo -nnn  -nnnn]                                                    :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +0,0 @@
+-minishell> echo -nnn  -nnnn
+--nnn -nnnn
+-minishell> exit
+[echo -nnn -nnnnn a -nnnnnnnnn c]                                     :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> echo -nnn -nnnnn a -nnnnnnnnn c
+--nnn -nnnnn a -nnnnnnnnn c
+-minishell> exit
++a -nnnnnnnnn c
+\ No newline at end of file
+[echo -nna]                                                           :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> echo -nna
+ -nna
+-minishell> exit
+[echo -n-n-n]                                                         :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> echo -n-n-n
+ -n-n-n
+-minishell> exit
+[echo 1nnnn]                                                          :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> echo 1nnnn
+ 1nnnn
+-minishell> exit
+[echo ";|()"]                                                         :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> echo ";|()"
+ ;|()
+-minishell> exit
+[pwd]                                                                 :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> pwd
+ /Users/akitig/Main/42/honda/minishell
+-minishell> exit
+[cd\npwd]                                                             :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,4 +1 @@
+-minishell> cd
+-minishell> pwd
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/Users/akitig
+[cd src\npwd]                                                         :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,4 +1 @@
+-minishell> cd src
+-minishell> pwd
+ /Users/akitig/Main/42/honda/minishell
+-minishell> exit
+[cd /etc\npwd]                                                        :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,4 +1 @@
+-minishell> cd /etc
+-minishell> pwd
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/etc
+[cd . \n pwd \n echo $PWD $OLDPWD]                                    :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,6 +1,2 @@
+-minishell> cd . 
+-minishell>  pwd 
+ /Users/akitig/Main/42/honda/minishell
+-minishell>  echo $PWD $OLDPWD
+-/Users/akitig/Main/42/honda/minishell 
+-minishell> exit
++/Users/akitig/Main/42/honda/minishell /Users/akitig/Main/42/honda/minishell
+[cd .. \n pwd \n echo $PWD $OLDPWD]                                   :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,6 +1,2 @@
+-minishell> cd .. 
+-minishell>  pwd 
+-/Users/akitig/Main/42/honda/minishell
+-minishell>  echo $PWD $OLDPWD
+-/Users/akitig/Main/42/honda/minishell 
+-minishell> exit
++/Users/akitig/Main/42/honda
++/Users/akitig/Main/42/honda /Users/akitig/Main/42/honda/minishell
+[cd /// \n pwd \n echo $PWD $OLDPWD]                                  :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,6 +1,2 @@
+-minishell> cd /// 
+-minishell>  pwd 
+-/Users/akitig/Main/42/honda/minishell
+-minishell>  echo $PWD $OLDPWD
+-/Users/akitig/Main/42/honda/minishell 
+-minishell> exit
++/
++/ /Users/akitig/Main/42/honda/minishell
+[cd /tmp/// \n pwd \n echo $PWD $OLDPWD]                              :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,6 +1,2 @@
+-minishell> cd /tmp/// 
+-minishell>  pwd 
+-/Users/akitig/Main/42/honda/minishell
+-minishell>  echo $PWD $OLDPWD
+-/Users/akitig/Main/42/honda/minishell 
+-minishell> exit
++/tmp
++/tmp /Users/akitig/Main/42/honda/minishell
+[unset PWD\npwd\ncd /etc\npwd]                                        :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,7 +1,2 @@
+-minishell> unset PWD
+-minishell> pwd
+ /Users/akitig/Main/42/honda/minishell
+-minishell> cd /etc
+-minishell> pwd
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/etc
+[unset PWD \n cd \n echo $PWD \ncd /tmp\necho $PWD]                   :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,8 +1,2 @@
+-minishell> unset PWD 
+-minishell>  cd 
+-minishell>  echo $PWD 
+-/Users/akitig/Main/42/honda/minishell
+-minishell> cd /tmp
+-minishell> echo $PWD
+-/Users/akitig/Main/42/honda/minishell
+-minishell> exit
++/Users/akitig
++/tmp
+[unset PWD\ncd\necho $OLDPWD\ncd /tmp\necho $OLDPWD]                  :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,8 +1,2 @@
+-minishell> unset PWD
+-minishell> cd
+-minishell> echo $OLDPWD
+ 
+-minishell> cd /tmp
+-minishell> echo $OLDPWD
+-
+-minishell> exit
++/Users/akitig
+[echo hello | cat]                                                    :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> echo hello | cat
+ hello
+-minishell> exit
+[export aaa=yeah\n export | grep yeah]                                :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> export aaa=yeah
+-minishell>  export | grep yeah
+-minishell> exit
++declare -x aaa="yeah"
+[exit | ls | grep M]                                                  :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> exit | ls | grep M
+ Makefile
+-minishell> exit
+[cd | pwd | grep /]                                                   :
+--- out	2025-02-14 23:15:57
++++ cmp	2025-02-14 23:15:57
+@@ -1,3 +1 @@
+-minishell> cd | pwd | grep /
+ /Users/akitig/Main/42/honda/minishell
+-minishell> exit

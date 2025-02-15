@@ -1,0 +1,378 @@
+./combination_test/run_test.sh
+make[1]: Nothing to be done for `all'.
+\e[36m
+ ██████   ██████   ██████   ██████      ██   ██   ████    ██  ██    ████    ██████   ██  ██   ██████   ██       ██
+   ██     ██       ██  ██     ██        ███ ███    ██     ███ ██     ██     ██  ██   ██  ██   ██       ██       ██
+   ██     ██       ██         ██        ███████    ██     ██████     ██     ██       ██  ██   ██       ██       ██
+   ██     ██████   ██████     ██        ██ █ ██    ██     ██████     ██     ██████   ██████   ██████   ██       ██
+   ██     ██           ██     ██        ██   ██    ██     ██ ███     ██         ██   ██  ██   ██       ██       ██
+   ██     ██       ██  ██     ██        ██   ██    ██     ██  ██     ██     ██  ██   ██  ██   ██       ██       ██
+   ██     ██████   ██████     ██        ██   ██   ████    ██  ██    ████    ██████   ██  ██   ██████   ██████   ██████
+
+\e[0m
+expand test
+"echo $USER | cat"            :\e[1;31m  diff NG\e[0m  status OK
+
+"echo $USER$HOME | cat"       :\e[1;31m  diff NG\e[0m  status OK
+
+"echo $USERA | cat"           :\e[1;31m  diff NG\e[0m  status OK
+
+"echo akitig'A' | cat"        :\e[1;31m  diff NG\e[0m  status OK
+
+"echo akitig23 | cat"         :\e[1;31m  diff NG\e[0m  status OK
+
+"echo akitig$ | cat"          :\e[1;31m  diff NG\e[0m  status OK
+
+"echo akitig'$'akitig | cat"  :\e[1;31m  diff NG\e[0m  status OK
+
+"echo 'R' | cat"              :\e[1;31m  diff NG\e[0m  status OK
+
+"echo akitig$ | cat"          :\e[1;31m  diff NG\e[0m  status OK
+
+"echo akitig$ | cat"          :\e[1;31m  diff NG\e[0m  status OK
+
+"echo $?"                     :\e[1;31m  diff NG\e[0m  status OK
+
+"echo $?$?$?$?$?$?$?$?$?$?$?$?":\e[1;31m  diff NG\e[0m  status OK
+
+"echo $???????????"           :\e[1;31m  diff NG\e[0m  status OK
+
+"echo $@?"                    :\e[1;31m  diff NG\e[0m  status OK
+
+"echo $?abc"                  :\e[1;31m  diff NG\e[0m  status OK
+
+"echo $abc?abc"               :\e[1;31m  diff NG\e[0m  status OK
+
+"echo $?$USER"                :\e[1;31m  diff NG\e[0m  status OK
+
+"echo $?$USEAR"               :\e[1;31m  diff NG\e[0m  status OK
+
+"ls && echo $?"               :\e[1;31m  diff NG\e[0m  status OK
+
+"lsl || echo $?"              :\e[1;31m  diff NG\e[0m  status OK
+
+"exit 42 | echo $?"           :\e[1;31m  diff NG\e[0m  status OK
+
+"(exit 42 && ls) || echo $?"  :\e[1;31m  diff NG\e[0m  status OK
+
+"(true && ls) && echo $?"     :\e[1;31m  diff NG\e[0m  status OK
+
+"false && true || ls && echo $?":\e[1;31m  diff NG\e[0m  status OK
+
+"exit 3 && ls $$ echo $?"     :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 3 but got 0\e[0m
+
+"echo $? && false || echo $?" :\e[1;31m  diff NG\e[0m  status OK
+
+"(echo $? && exit 2) || echo $?":\e[1;31m  diff NG\e[0m  status OK
+
+=== Test Summary ===
+Tests completed:       27
+Tests passed: 0
+Tests failed: 27
+builtin test
+"export NEW_VAR"              :\e[1;31m  diff NG\e[0m  status OK
+
+"export NEW_VAR=42"           :\e[1;31m  diff NG\e[0m  status OK
+
+"export NEW_VAR=42 | cat"     :\e[1;31m  diff NG\e[0m  status OK
+
+"export new=42 | cat"         :\e[1;31m  diff NG\e[0m  status OK
+
+"export testakitig=42 | cat"  :\e[1;31m  diff NG\e[0m  status OK
+
+"export =abc"                 :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"export =abc | cat"           :\e[1;31m  diff NG\e[0m  status OK
+
+"unset"                       :\e[1;31m  diff NG\e[0m  status OK
+
+"unset NEW_VAR"               :\e[1;31m  diff NG\e[0m  status OK
+
+"unset NON_EXISTING_VAR"      :\e[1;31m  diff NG\e[0m  status OK
+
+"unset NON_EXISTING_VAR | cat":\e[1;31m  diff NG\e[0m  status OK
+
+"echo"                        :\e[1;31m  diff NG\e[0m  status OK
+
+"echo hello"                  :\e[1;31m  diff NG\e[0m  status OK
+
+"echo hello | cat"            :\e[1;31m  diff NG\e[0m  status OK
+
+"echo -n hello"               :\e[1;31m  diff NG\e[0m  status OK
+
+"echo -n -n hello"            :\e[1;31m  diff NG\e[0m  status OK
+
+"echo -nnn hello"             :\e[1;31m  diff NG\e[0m  status OK
+
+"echo -nabc hello"            :\e[1;31m  diff NG\e[0m  status OK
+
+"echo -nnnn -nn -nnnn abc"    :\e[1;31m  diff NG\e[0m  status OK
+
+"cd"                          :\e[1;31m  diff NG\e[0m  status OK
+
+"unset HOME"                  :\e[1;31m  diff NG\e[0m  status OK
+
+"cd"                          :\e[1;31m  diff NG\e[0m  status OK
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"cd /"                        :\e[1;31m  diff NG\e[0m  status OK
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"cd ."                        :\e[1;31m  diff NG\e[0m  status OK
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"cd .."                       :\e[1;31m  diff NG\e[0m  status OK
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"cd /home/user/bin"           :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"cd /home/user/bin/.."        :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"cd ./bin"                    :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"cd ./bin/../usr"             :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"cd /non-existing-dir"        :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"cd /non-existing-dir | cat"  :\e[1;31m  diff NG\e[0m  status OK
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"cd invalid!path"             :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"cd invalid!path | cat"       :\e[1;31m  diff NG\e[0m  status OK
+
+"pwd"                         :\e[1;31m  diff NG\e[0m  status OK
+
+"exit"                        :\e[1;31m  diff NG\e[0m  status OK
+
+"exit 42"                     :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 42 but got 0\e[0m
+
+"exit """                     :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 255 but got 0\e[0m
+
+"exit hello"                  :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 255 but got 0\e[0m
+
+"exit 42Tokyo"                :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 255 but got 0\e[0m
+
+"exit 1 2"                    :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"exit  +1"                    :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"exit  ++1"                   :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 255 but got 0\e[0m
+
+"exit -1"                     :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 255 but got 0\e[0m
+
+"exit --1"                    :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 255 but got 0\e[0m
+
+"exit 99999999999999999999"   :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 255 but got 0\e[0m
+
+"exit 2147483648"             :\e[1;31m  diff NG\e[0m  status OK
+
+"exit -9223372036854775807"   :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"exit -9223372036854775808"   :\e[1;31m  diff NG\e[0m  status OK
+
+"exit -9223372036854775809"   :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 255 but got 0\e[0m
+
+"exit 9223372036854775807"    :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 255 but got 0\e[0m
+
+"exit 9223372036854775808"    :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 255 but got 0\e[0m
+
+"exit | exit 3 || exit"       :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 3 but got 0\e[0m
+
+=== Test Summary ===
+Tests completed:       62
+Tests passed: 0
+Tests failed: 62
+heredoc test
+"cat << abc 
+abc
+"            :\e[1;31m  diff NG\e[0m  status OK
+
+"cat << abc 
+abcd
+abc
+"       :\e[1;31m  diff NG\e[0m  status OK
+
+"cat << abc 
+ab c
+abc
+"       :\e[1;31m  diff NG\e[0m  status OK
+
+"cat << abc 
+ abc
+abc
+"       :\e[1;31m  diff NG\e[0m  status OK
+
+"cat << abc 
+ abc
+gabca
+abc
+" :\e[1;31m  diff NG\e[0m  status OK
+
+"cat << eof <<eof<<eof
+eof
+abc
+eof
+abcdefg
+eof
+":\e[1;31m  diff NG\e[0m  status OK
+
+"cat Makefile << eof includes/utils.h<<eof<<eof
+eof
+abc
+eof
+abcdefg
+eof
+":\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"cat << eof
+$USER
+$aUSER
+$USER"abcd"
+eof
+":\e[1;31m  diff NG\e[0m  status OK
+
+"cat << eof
+"$USER"
+$aUSER
+$USERabcd
+"$USER
+eof
+":\e[1;31m  diff NG\e[0m  status OK
+
+"cat << eof
+"a
+eof
+"          :\e[1;31m  diff NG\e[0m  status OK
+
+"cat << eof
+'a
+eof
+"          :\e[1;31m  diff NG\e[0m  status OK
+
+"cat << eof
+'a
+eof
+"          :\e[1;31m  diff NG\e[0m  status OK
+
+=== Test Summary ===
+Tests completed:       12
+Tests passed: 0
+Tests failed: 12
+redirect test
+"echo 'Should fail' > protected.txt && echo 'should not print'":\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"echo 'Append fail' >> protected.txt":\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"cat < write_only.txt && echo 'should not print'":\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"cat < write_only.txt || echo 'fallback after fail'":\e[1;31m  diff NG\e[0m  status OK
+
+"echo 'Test' > mydir"         :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"cat < nosuchfile123"         :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"echo 'Test' > not_existing_dir/filename":\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 1 but got 0\e[0m
+
+"echo 'Overwritten' > normal_file.txt && cat normal_file.txt":\e[1;31m  diff NG\e[0m  status OK
+
+"cat < in_file.txt"           :\e[1;31m  diff NG\e[0m  status OK
+
+"cat < chain_in.txt > chain_out.txt":\e[1;31m  diff NG\e[0m  status OK
+
+"cat chain_out.txt"           :\e[1;31m  diff NG\e[0m  status OK
+
+=== Test Summary ===
+Tests completed:       11
+Tests passed: 0
+Tests failed: 11
+exec path test
+=== Test: '.' and '..' as commands ===
+".."                          :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 127 but got 0\e[0m
+
+"..."                         :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 127 but got 0\e[0m
+
+=== Test: PATH is empty ===
+"unset PATH && ls"            :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 127 but got 0\e[0m
+
+=== Test: Non-ENOENT error on access() ===
+"./no_read_dir"               :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 126 but got 0\e[0m
+
+"./no_read_dir/sub/echo"      :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 126 but got 0\e[0m
+
+=== Put current directory first in PATH and execute the leftmost executable file===
+手動で実行可能ファイル(ls)を作成して確認
+"ls"                          :\e[1;31m  diff NG\e[0m  status OK
+
+"./ls///"                     :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 127 but got 0\e[0m
+
+=== Test: command not found => exit 127 ===
+"zzzNonExistentCommand123"    :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 127 but got 0\e[0m
+
+=== Test Summary ===
+Tests completed:        8
+Tests passed: 0
+Tests failed: 8
+syntax error test
+"""                           :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"'"                           :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+")"                           :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"|"                           :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+">"                           :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"<"                           :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+">>"                          :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"<<"                          :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"(()"                         :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"()"                          :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"asdf " asfd " afd ""         :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"(cat))"                      :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"((cat)"                      :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"(cat) ls"                    :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+">abc (cat) "                 :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"<abc (cat) "                 :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"ls && >abc (cat)"            :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+")()()("                      :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+")("                          :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"(cat))("                     :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+"ls || >abc (cat)"            :\e[1;31m  diff NG\e[0m\e[1;31m  status NG, expected 2 but got 0\e[0m
+
+=== Test Summary ===
+Tests completed:       21
+Tests passed: 0
+Tests failed: 21
+test is completed
